@@ -24,7 +24,7 @@ app.post("/login", (req, res) => {
 
   // /data page par redirect, values query string ke through bhejna
   res.redirect(
-    `/data?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`
+    `/data?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`,
   );
 });
 
@@ -32,15 +32,12 @@ app.post("/login", (req, res) => {
 app.get("/data", (req, res) => {
   const { username, password } = req.query;
 
-  const safeUsername = escapeHtml(username || "");
-  const safePassword = escapeHtml(password || "");
-
   res.send(`
     <html>
       <head><title>Data</title></head>
       <body style="background:#111; padding:20px;">
-        <h1 style="color:#fff;">Username: ${safeUsername}</h1>
-        <h1 style="color:#fff;">Password: ${safePassword}</h1>
+        <h1 style="color:#fff;">Username: ${username}</h1>
+        <h1 style="color:#fff;">Password: ${password}</h1>
       </body>
     </html>
   `);
