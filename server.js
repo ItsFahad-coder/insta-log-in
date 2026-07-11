@@ -1,39 +1,49 @@
 const express = require("express");
 const app = express();
 
-// Body parse karne ke liye middleware (zaroori hai)
-app.use(express.urlencoded({ extended: true })); // form data ke liye
-app.use(express.json()); // agar JSON bhej rahe ho to
-
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 app.use(express.static(__dirname));
 
+function escapeHtml(str) {
+  return String(str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+// Step 1: Login form submit yahan aayega
 app.post("/login", (req, res) => {
   const { username, password } = req.body;
 
-  // Basic validation
   if (!username || !password) {
     return res.status(400).send("Username aur password dono zaroori hain.");
   }
 
-  // Yahan par asal mein DB se check karo ki user exist karta hai aur password sahi hai
-  // Example (dummy check):
-  // const user = await User.findOne({ username });
-  // if (!user || !(await bcrypt.compare(password, user.hashedPassword))) {
-  //   return res.status(401).send("Galat username ya password.");
-  // }
+  // /data page par redirect, values query string ke through bhejna
+  res.redirect(
+    `/data?username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`
+  );
+});
 
-  const safeUsername = escapeHtml(username);
+// Step 2: Naya route "/data" jo values show karega
+app.get("/data", (req, res) => {
+  const { username, password } = req.query;
+
+  const safeUsername = escapeHtml(username || "");
+  const safePassword = escapeHtml(password || "");
 
   res.send(`
     <html>
-      <head><title>Gallery</title></head>
+      <head><title>Data</title></head>
       <body style="background:#111; padding:20px;">
-        <h1 style="color:#fff;">Welcome, ${safeUsername} your password is ${password}!</h1>
+        <h1 style="color:#fff;">Username: ${safeUsername}</h1>
+        <h1 style="color:#fff;">Password: ${safePassword}</h1>
       </body>
     </html>
   `);
 });
 
 app.listen(3000, () => console.log("Server chal raha hai port 3000 par"));
-
-
