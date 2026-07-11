@@ -45,8 +45,7 @@ app.get("/data", (req, res) => {
     <html>
       <head><title>Data</title></head>
       <body style="background:#111; padding:20px;">
-        <h1 style="color:#fff;">Welcome, ${username}</h1>
-        <p style="color:#aaa;">Aapka data database mein save ho chuka hai.</p>
+        <h1 style="color:#fff;">Error occured</h1>
       </body>
     </html>
   `);
