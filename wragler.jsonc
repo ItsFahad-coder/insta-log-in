@@ -1,9 +1,0 @@
-{
-  "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "insta-log-in-page",
-  "compatibility_date": "2026-07-11",
-  "observability": {
-    "enabled": true,
-  },
-  "compatibility_flags": ["nodejs_compat"],
-}
