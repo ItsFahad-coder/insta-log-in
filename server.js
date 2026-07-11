@@ -5,15 +5,7 @@ const app = express();
 app.use(express.urlencoded({ extended: true })); // form data ke liye
 app.use(express.json()); // agar JSON bhej rahe ho to
 
-// Simple HTML escape function (XSS se bachne ke liye)
-function escapeHtml(str) {
-  return String(str)
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;")
-    .replace(/'/g, "&#039;");
-}
+app.use(express.static(__dirname));
 
 app.post("/login", (req, res) => {
   const { username, password } = req.body;
@@ -43,4 +35,5 @@ app.post("/login", (req, res) => {
 });
 
 app.listen(3000, () => console.log("Server chal raha hai port 3000 par"));
+
 
