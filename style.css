@@ -4,34 +4,38 @@
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
 }
-
 body {
-  background: #fafafa;
+  background-color: lightgray;
+}
+img {
+  height: 50px;
+}
+.second {
+  height: 80px;
+}
+.logo-container {
   display: flex;
-  justify-content: center;
   align-items: center;
-  height: 100vh;
 }
-
-.container {
-  width: 350px;
+.drive {
+  position: absolute;
+  left: 100px;
+  font-size: 20px;
 }
-
-.card {
-  background: #fff;
-  border: 1px solid #dbdbdb;
-  padding: 40px;
-  text-align: center;
+.h {
+  margin: 40px 0px 20px 30px;
+  font-size: 25px;
+  font-weight: bold;
 }
-
-.logo {
-  font-size: 42px;
-  font-family: cursive;
-  margin-bottom: 35px;
+.sign-in-para {
+  font-size: 20px;
 }
-
+.main-content {
+  margin-top: 100px;
+  padding-left: 30px;
+}
 input {
-  width: 100%;
+  width: 350px;
   padding: 10px;
   margin-bottom: 10px;
   border: 1px solid #dbdbdb;
@@ -39,9 +43,18 @@ input {
   background: #fafafa;
   outline: none;
 }
-
+input:focus {
+  border: 2px solid #0095f6;
+}
+.forgot {
+  font-size: 12px;
+  color: rgb(47, 47, 83);
+  margin-top: -15px;
+  cursor: context-menu;
+}
 button {
-  width: 100%;
+  margin-top: 10px;
+  width: 100px;
   padding: 10px;
   background: #0095f6;
   color: white;
@@ -55,73 +68,10 @@ button {
 button:hover {
   background: #1877f2;
 }
-
-.or {
-  margin: 20px 0;
-  color: gray;
-  font-size: 14px;
+form {
+  margin-top: 30px;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
 }
 
-.facebook {
-  color: #385185;
-  font-weight: bold;
-  margin-bottom: 15px;
-  cursor: pointer;
-}
-
-.forgot {
-  text-decoration: none;
-  color: #00376b;
-  font-size: 13px;
-}
-
-.signup-box {
-  margin-top: 10px;
-  background: white;
-  border: 1px solid #dbdbdb;
-  padding: 20px;
-  text-align: center;
-}
-
-.signup-box a {
-  text-decoration: none;
-  color: #0095f6;
-  font-weight: bold;
-}
-
-@media (max-width: 400px) {
-  .container {
-    width: 90%;
-  }
-
-  .card {
-    padding: 30px 20px;
-  }
-
-  .logo {
-    font-size: 36px;
-  }
-}
-.loader {
-  width: 50px;
-  height: 50px;
-  border: 5px solid #ddd;
-  border-top: 5px solid #0095f6;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  display: none;
-}
-
-@keyframes spin {
-  from {
-    transform: translate(-50%, -50%) rotate(0deg);
-  }
-  to {
-    transform: translate(-50%, -50%) rotate(360deg);
-  }
-}
